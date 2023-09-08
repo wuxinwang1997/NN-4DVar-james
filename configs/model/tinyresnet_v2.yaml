@@ -1,0 +1,30 @@
+_target_: src.models.nn4dvar_module.NN4DVarLitModule
+
+optimizer:
+  _target_: torch.optim.AdamW
+  _partial_: true
+  lr: 3e-4
+#  weight_decay: 0.0
+
+scheduler:
+  _target_: src.utils.tools.GradualWarmupScheduler
+  _partial_: true
+  multiplier: 1
+  total_epoch: 5
+
+after_scheduler:
+  _target_: torch.optim.lr_scheduler.CosineAnnealingLR
+  _partial_: true
+  T_max: 45
+  verbose: true
+
+net:
+  _target_: src.models.components.tinynet.TinyResNet
+  kernel_size: 4
+  n_filters_ks4: [32, 64]
+  filters_ks1_init: [32]
+  filters_ks1_inter: [64]
+  filters_ks1_final: [128]
+  n_channels_in: ${data.obs_num}
+  n_channels_out: 1
+  padding_mode: 'circular'

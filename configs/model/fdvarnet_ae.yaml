@@ -1,0 +1,21 @@
+_target_: src.models.fdvarnet_module.FDVarNNLitModule
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 3e-4
+
+scheduler:
+  _target_: src.utils.tools.GradualWarmupScheduler
+  _partial_: true
+  multiplier: 1
+  total_epoch: 5
+
+after_scheduler:
+  _target_: torch.optim.lr_scheduler.CosineAnnealingLR
+  _partial_: true
+  T_max: 45
+  verbose: true
+
+model_scheme: AE
+shapeData: 40
