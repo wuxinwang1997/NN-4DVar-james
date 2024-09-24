@@ -9,7 +9,7 @@ This is the official repository for the paper [A Four-Dimensional Variational Co
 
 Resources including traing/validation/inference codes are released here.
 
-Cite
+## Cite
 ```
 @article{wangFourDimensionalVariational2024,
   title = {A {{Four}}‐{{Dimensional Variational Constrained Neural Network}}‐{{Based Data Assimilation Method}}},
